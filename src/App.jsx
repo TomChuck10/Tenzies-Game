@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Die from "./Die";
+import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
-import Timer from "./Timer";
+import Timer from "./components/Timer";
 
 const App = () => {
 	const [dice, setDice] = useState(allNewDice());
@@ -82,6 +82,9 @@ const App = () => {
 			<Timer isRunning={isRunning} time={time} setTime={setTime} />
 			<button className='roll-dice' onClick={rollDice}>
 				{tenzies ? "New Game" : "Roll"}
+			</button>
+			<button className='record-button'>
+				<i className='fa-solid fa-stopwatch'></i>
 			</button>
 		</main>
 	);
