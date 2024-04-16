@@ -100,3 +100,51 @@ main > .record-button {
 	font-family: "Karla", sans-serif;
 	cursor: pointer;
 }
+
+.dialog-title {
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	text-transform: uppercase;
+}
+
+.ranking {
+	display: flex;
+	justify-content: center;
+}
+
+.ranking-list {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.ranking-list > li {
+	margin: 2px;
+	font-size: 20px;
+}
+
+.ranking-list > li::marker {
+	color: #5035ff;
+}
+
+.title-h3 {
+	margin: 0;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #5035ff;
+	color: #fff;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.button-close {
+	background-color: #5035ff;
+	border: none;
+	color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 12px;
+	font-weight: 700;
+	cursor: pointer;
+}

@@ -1,8 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 import Timer from "./components/Timer";
+import Times from "./components/Times";
 
 const App = () => {
 	const [dice, setDice] = useState(allNewDice());
@@ -10,6 +12,8 @@ const App = () => {
 	const [numberOfRolls, setNumberOfRolls] = useState(0);
 	const [isRunning, setIsRunning] = useState(false);
 	const [time, setTime] = useState(0);
+	const [open, setOpen] = useState(false);
+	const [bestTime, setBestTime] = useState([]);
 
 	useEffect(() => {
 		const allHeld = dice.every(die => die.isHeld);
@@ -48,6 +52,7 @@ const App = () => {
 			setDice(allNewDice());
 			setNumberOfRolls(0);
 			setTime(0);
+			setBestTime(prev => [...prev, time]);
 		}
 	}
 
@@ -69,6 +74,15 @@ const App = () => {
 		/>
 	));
 
+	// Funckje do obsługi okna dialogowego
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
 	return (
 		<main>
 			{tenzies && <Confetti />}
@@ -84,8 +98,9 @@ const App = () => {
 				{tenzies ? "New Game" : "Roll"}
 			</button>
 			<button className='record-button'>
-				<i className='fa-solid fa-stopwatch'></i>
+				<i className='fa-solid fa-stopwatch' onClick={handleClickOpen}></i>
 			</button>
+			<Times open={open} handleClose={handleClose} theBestTimes={bestTime} />
 		</main>
 	);
 };
